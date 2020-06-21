@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Context } from "../../context";
 import Spinner from "../layout/Spinner";
 import Track from './Track'
+import Footer from "../layout/Footer";
 
 const Tracks = () => {
   const { trackList, heading } = useContext(Context);
@@ -17,6 +18,7 @@ const Tracks = () => {
             <Track key={item.track.track_id} track={item.track} />
           ))}
         </div>
+        <Footer/>
       </>
     );
   }
