@@ -38,7 +38,6 @@ const Lyrics = props => {
     Object.keys(track).length === 0 ||
     Object.keys(lyrics).length === 0
   ) {
-      console.log(track)
     return <Spinner />;
   } else {
     return (

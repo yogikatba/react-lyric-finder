@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import Index from './components/layout/Index';
 import { Provider } from './context';
 import Lyrics from './components/tracks/Lyrics';
+import Footer from './components/layout/Footer';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path='/lyrics/track/:id' component={Lyrics} />
         </Switch>
       </div>
+      <Footer/>
       </Provider>
     </Router>
   );

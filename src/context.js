@@ -17,6 +17,8 @@ export function Provider(props) {
     return (
         <Context.Provider value={{
             trackList,
+            setTrackList,
+            setHeading,
             heading
         }}>
             {props.children}
