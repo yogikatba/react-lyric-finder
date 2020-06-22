@@ -17,6 +17,7 @@ const Search = () => {
         setHeading("Search Results");
       })
       .catch(err => console.log(err));
+      // eslint-disable-next-line
   }, [trackTitle]);
 
   const findTrack = e => {

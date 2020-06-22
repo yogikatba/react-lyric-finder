@@ -30,6 +30,7 @@ const Lyrics = props => {
         setTrack({ track });
       })
       .catch(err => console.log(err));
+      // eslint-disable-next-line
   }, []);
 
   if (
