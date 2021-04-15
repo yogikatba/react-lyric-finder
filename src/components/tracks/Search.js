@@ -8,7 +8,7 @@ const Search = () => {
 
   useEffect(() => {
     fetch(
-        `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q_track=${trackTitle}&page_size=10&page=1&s_track_rating=desc&apikey=${
+        `https://cors-access-allow.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q_track=${trackTitle}&page_size=10&page=1&s_track_rating=desc&apikey=${
           process.env.REACT_APP_MM_KEY}`
       ).then(r => r.json())
       .then(res => {
