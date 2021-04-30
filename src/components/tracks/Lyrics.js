@@ -3,34 +3,30 @@ import { Link } from "react-router-dom";
 import Spinner from "../layout/Spinner";
 import Moment from "react-moment";
 
-const Lyrics = props => {
+const Lyrics = (props) => {
   const [track, setTrack] = useState({});
   const [lyrics, setLyrics] = useState({});
 
   useEffect(() => {
     fetch(
-        `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=${
-          props.match.params.id
-        }&apikey=${process.env.REACT_APP_MM_KEY}`
-      )
-      .then(res => res.json())
-      .then(res => {
+      `https://cors-access-allow.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=${props.match.params.id}&apikey=${process.env.REACT_APP_MM_KEY}`
+    )
+      .then((res) => res.json())
+      .then((res) => {
         let lyrics = res.message.body.lyrics;
         setLyrics({ lyrics });
 
         return fetch(
-          `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.get?track_id=${
-            props.match.params.id
-          }&apikey=${process.env.REACT_APP_MM_KEY}`
+          `https://cors-access-allow.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.get?track_id=${props.match.params.id}&apikey=${process.env.REACT_APP_MM_KEY}`
         );
       })
-      .then(res => res.json())
-      .then(res => {
+      .then((res) => res.json())
+      .then((res) => {
         let track = res.message.body.track;
         setTrack({ track });
       })
-      .catch(err => console.log(err));
-      // eslint-disable-next-line
+      .catch((err) => console.log(err));
+    // eslint-disable-next-line
   }, []);
 
   if (
@@ -52,7 +48,11 @@ const Lyrics = props => {
             <span className="text-secondary">{track.track.artist_name}</span>
           </h5>
           <div className="card-body">
-            <p className="card-text">{lyrics.lyrics.lyrics_body}</p>
+            <p className="card-text">
+              {lyrics && lyrics.lyrics && lyrics.lyrics.lyrics_body
+                ? lyrics.lyrics.lyrics_body
+                : "No lyrics found"}
+            </p>
           </div>
         </div>
 
